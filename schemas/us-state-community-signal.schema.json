@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.aaboard.org/registry/us-state-community-signal.schema.json",
+  "title": "AAB U.S. State Community Signal Record",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["id", "type", "state", "stateCode", "slug", "statusCode", "title", "summary", "signalLinks"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^AAB-US-STATE-COMMUNITY-SIGNAL-" },
+    "type": { "const": "us_state_community_signal" },
+    "state": { "type": "string" },
+    "stateCode": { "type": "string", "minLength": 2, "maxLength": 2 },
+    "slug": { "type": "string" },
+    "region": { "type": "string" },
+    "status": { "type": "string" },
+    "statusCode": { "type": "string", "enum": ["C0", "C1", "C2", "C3"] },
+    "signalStrength": { "type": "string" },
+    "title": { "type": "string" },
+    "summary": { "type": "string" },
+    "signalNote": { "type": "string" },
+    "evidenceBasis": { "type": "string" },
+    "signalLinks": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "sourceUrls": { "type": "array", "items": { "type": "string", "format": "uri-reference" } },
+    "lastVerifiedAt": { "type": "string" },
+    "updatedAt": { "type": "string" }
+  }
+}
