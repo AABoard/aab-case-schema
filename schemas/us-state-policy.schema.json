@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.aaboard.org/registry/us-state-policy.schema.json",
+  "title": "AAB U.S. State Policy Record",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["id", "type", "state", "stateCode", "slug", "statusCode", "title", "summary", "policyLinks"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^AAB-US-STATE-POLICY-" },
+    "type": { "const": "us_state_policy" },
+    "state": { "type": "string" },
+    "stateCode": { "type": "string", "minLength": 2, "maxLength": 2 },
+    "slug": { "type": "string" },
+    "region": { "type": "string" },
+    "status": { "type": "string" },
+    "statusCode": { "type": "string", "enum": ["S0", "S1", "S2", "S3", "R"] },
+    "policySignalStrength": { "type": "string" },
+    "title": { "type": "string" },
+    "summary": { "type": "string" },
+    "policyNote": { "type": "string" },
+    "evidenceBasis": { "type": "string" },
+    "policyLinks": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "sourceUrls": { "type": "array", "items": { "type": "string", "format": "uri-reference" } },
+    "lastVerifiedAt": { "type": "string" },
+    "updatedAt": { "type": "string" }
+  }
+}
