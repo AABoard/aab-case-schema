@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.aaboard.org/registry/community-signal.schema.json",
+  "title": "AAB Community Signal Record",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["id", "type", "title", "summary", "jurisdiction", "statusCode", "signalStrength", "sourceUrls"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^AAB-COMMUNITY-SIGNAL-" },
+    "type": { "const": "community_signal" },
+    "title": { "type": "string" },
+    "summary": { "type": "string" },
+    "jurisdiction": { "type": "string" },
+    "signalKind": { "type": "string" },
+    "statusCode": { "type": "string", "enum": ["C0", "C1", "C2", "C3"] },
+    "signalStrength": { "type": "string" },
+    "signalNote": { "type": "string" },
+    "sourceCodes": { "type": "array", "items": { "type": "string" } },
+    "sourceUrls": { "type": "array", "items": { "type": "string", "format": "uri-reference" } },
+    "lastVerifiedAt": { "type": "string" },
+    "updatedAt": { "type": "string" }
+  }
+}
