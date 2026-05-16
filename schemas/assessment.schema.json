@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.aaboard.org/registry/assessment.schema.json",
+  "title": "AAB Assessment and Credentialing Record",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["id", "type", "title", "summary", "issuer", "status", "sourceUrls"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^AAB-ASSESSMENT-" },
+    "type": { "const": "assessment" },
+    "title": { "type": "string" },
+    "summary": { "type": "string" },
+    "issuer": { "type": "string" },
+    "region": { "type": "string" },
+    "audience": { "type": "string" },
+    "credentialType": { "type": "string" },
+    "assessmentMethod": { "type": ["string", "array"], "items": { "type": "string" } },
+    "focus": { "type": "array", "items": { "type": "string" } },
+    "whyNotable": { "type": "string" },
+    "aabUse": { "type": "string" },
+    "status": { "type": "string" },
+    "sourceUrls": { "type": "array", "items": { "type": "string", "format": "uri-reference" } },
+    "updatedAt": { "type": "string" }
+  }
+}
