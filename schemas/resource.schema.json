@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.aaboard.org/registry/resource.schema.json",
+  "title": "AAB Free Resource Record",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["id", "type", "title", "summary", "provider", "status", "sourceUrls"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^AAB-RESOURCE-" },
+    "type": { "const": "resource" },
+    "title": { "type": "string" },
+    "summary": { "type": "string" },
+    "provider": { "type": "string" },
+    "region": { "type": "string" },
+    "audience": { "type": "string" },
+    "freeAccessCategory": { "type": "string" },
+    "costCondition": { "type": ["string", "array"], "items": { "type": "string" } },
+    "offerings": { "type": "array", "items": { "type": "string" } },
+    "aabUse": { "type": "string" },
+    "status": { "type": "string" },
+    "sourceUrls": { "type": "array", "items": { "type": "string", "format": "uri-reference" } },
+    "updatedAt": { "type": "string" }
+  }
+}
