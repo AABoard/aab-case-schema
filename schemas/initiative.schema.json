@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.aaboard.org/registry/initiative.schema.json",
+  "title": "AAB Initiative Record",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["id", "type", "title", "summary", "leadOrganization", "status", "sourceUrls"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^AAB-INITIATIVE-" },
+    "type": { "const": "initiative" },
+    "title": { "type": "string" },
+    "summary": { "type": "string" },
+    "leadOrganization": { "type": "string" },
+    "region": { "type": "string" },
+    "audience": { "type": "string" },
+    "initiativeType": { "type": "string" },
+    "focus": { "type": "array", "items": { "type": "string" } },
+    "whyNotable": { "type": "string" },
+    "aabUseCase": { "type": "string" },
+    "status": { "type": "string" },
+    "sourceUrls": { "type": "array", "items": { "type": "string", "format": "uri-reference" } },
+    "updatedAt": { "type": "string" }
+  }
+}
