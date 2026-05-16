@@ -1,0 +1,45 @@
+{
+  "database": "aab",
+  "indexes": [
+    {
+      "collection": "cases",
+      "name": "case_registry_search",
+      "type": "search",
+      "definition": {
+        "mappings": {
+          "dynamic": false,
+          "fields": {
+            "case_id": { "type": "string" },
+            "title": { "type": "string", "analyzer": "lucene.standard" },
+            "summary": { "type": "string", "analyzer": "lucene.standard" },
+            "status": { "type": "token" },
+            "publicationStatus": { "type": "token" },
+            "structured_case": { "type": "document", "dynamic": true }
+          }
+        }
+      }
+    },
+    {
+      "collection": "registry",
+      "name": "registry_global_search",
+      "type": "search",
+      "definition": {
+        "mappings": {
+          "dynamic": false,
+          "fields": {
+            "id": { "type": "string" },
+            "type": { "type": "token" },
+            "title": { "type": "string", "analyzer": "lucene.standard" },
+            "summary": { "type": "string", "analyzer": "lucene.standard" },
+            "tags": { "type": "string" },
+            "status": { "type": "token" }
+          }
+        }
+      }
+    }
+  ],
+  "notes": [
+    "Use Atlas Search for registry keyword, fuzzy, and faceted search instead of legacy text indexes or regex-heavy queries.",
+    "Keep dynamic mapping off for stable public search surfaces and add fields intentionally as schemas evolve."
+  ]
+}
