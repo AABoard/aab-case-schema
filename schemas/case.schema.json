@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.aaboard.org/registry/case.schema.json",
+  "title": "AAB Case Registry Record",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["case_id", "title", "summary", "status", "publicationStatus", "type", "structured_case"],
+  "properties": {
+    "case_id": { "type": "string", "pattern": "^AAB-CASE-" },
+    "type": { "const": "case" },
+    "title": { "type": "string", "minLength": 3 },
+    "summary": { "type": "string" },
+    "case_date": { "type": "string" },
+    "status": { "type": "string" },
+    "publicationStatus": { "type": "string", "enum": ["Draft", "Review", "Published", "Completed", "Reviewed", "Archived"] },
+    "entry_url": { "type": ["string", "null"], "format": "uri-reference" },
+    "content_html": { "type": ["string", "null"] },
+    "facets": { "type": ["object", "null"], "additionalProperties": true },
+    "structured_case": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Structured evidence packet extracted from the case source. Keep original source trace and registry fields where available."
+    }
+  }
+}
