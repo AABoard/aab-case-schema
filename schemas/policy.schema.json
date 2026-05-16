@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.aaboard.org/registry/policy.schema.json",
+  "title": "AAB Country Policy Signal Record",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["id", "type", "title", "summary", "jurisdiction", "statusCode", "policySignalStrength", "sourceUrls"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^AAB-POLICY-" },
+    "type": { "const": "policy" },
+    "title": { "type": "string" },
+    "summary": { "type": "string" },
+    "jurisdiction": { "type": "string" },
+    "jurisdictionLevel": { "type": "string" },
+    "statusCode": { "type": "string", "enum": ["S0", "S1", "S2", "S3", "R"] },
+    "policySignalStrength": { "type": "string" },
+    "policyNote": { "type": "string" },
+    "sourceCodes": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string" },
+    "sourceUrls": { "type": "array", "items": { "type": "string", "format": "uri-reference" } },
+    "lastVerifiedAt": { "type": "string" },
+    "updatedAt": { "type": "string" }
+  }
+}
