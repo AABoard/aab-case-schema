@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.aaboard.org/registry/framework.schema.json",
+  "title": "AAB Framework Record",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["id", "type", "title", "summary", "status", "sourceUrls", "updatedAt"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^AAB-FRAMEWORK-" },
+    "type": { "const": "framework" },
+    "title": { "type": "string" },
+    "summary": { "type": "string" },
+    "organization": { "type": "string" },
+    "region": { "type": "string" },
+    "audience": { "type": "string" },
+    "frameworkType": { "type": "string" },
+    "category": { "type": "string" },
+    "status": { "type": "string" },
+    "visibility": { "type": "string" },
+    "sourceUrls": { "type": "array", "items": { "type": "string", "format": "uri-reference" } },
+    "lastVerifiedAt": { "type": "string" },
+    "updatedAt": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "display": { "type": "object", "additionalProperties": true }
+  }
+}
