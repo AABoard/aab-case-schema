@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.aaboard.org/registry/pilot.schema.json",
+  "title": "AAB Pilot Registry Record",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["id", "type", "title", "summary", "status", "publicationStatus"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^AAB-PILOT-" },
+    "type": { "const": "pilot" },
+    "title": { "type": "string" },
+    "summary": { "type": "string" },
+    "status": { "type": "string" },
+    "publicationStatus": { "type": "string" },
+    "pilotStatus": { "type": "string", "enum": ["Completed", "Reviewed", "Published", "Ongoing", "Draft", "Review"] },
+    "pilotTypeCode": { "type": "string", "enum": ["A", "B", "C", "D", "Type A", "Type B", "Type C", "Type D"] },
+    "pilotTypeName": { "type": "string" },
+    "currentPhase": { "type": "string" },
+    "currentPhaseStatus": { "type": "string" },
+    "pilotPhases": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "sourceUrls": { "type": "array", "items": { "type": "string", "format": "uri-reference" } },
+    "sourcePath": { "type": "string" },
+    "pilotNote": { "type": "object", "additionalProperties": true }
+  }
+}
