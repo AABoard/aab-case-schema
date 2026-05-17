@@ -1,27 +1,146 @@
 {
-  "database": "aab",
+  "database": "AAB",
+  "status": "review-artifact-not-yet-applied",
+  "lastVerifiedAgainstMongoDB": "2026-05-17",
+  "collectionsVerified": {
+    "cases": "cases_combined",
+    "pilots": "pilots",
+    "frameworks": "frameworks",
+    "resources": "free-resources",
+    "initiatives": "initiatives",
+    "assessments": "assessments&credentialing",
+    "policies": "policies",
+    "signals": "community-signals",
+    "state_policies": "us_state_policies",
+    "state_signals": "us_state_community_signals"
+  },
   "indexes": [
     {
-      "collection": "cases",
-      "name": "case_registry_search",
+      "collection": "cases_combined",
+      "name": "cases_combined_registry_search",
       "type": "search",
       "definition": {
         "mappings": {
           "dynamic": false,
           "fields": {
             "case_id": { "type": "string" },
-            "title": { "type": "string", "analyzer": "lucene.standard" },
-            "summary": { "type": "string", "analyzer": "lucene.standard" },
+            "entry_url": { "type": "string" },
             "status": { "type": "token" },
             "publicationStatus": { "type": "token" },
-            "structured_case": { "type": "document", "dynamic": true }
+            "facets": { "type": "document", "dynamic": true },
+            "structured_case": { "type": "document", "dynamic": true },
+            "content_html": { "type": "string", "analyzer": "lucene.standard" }
           }
         }
       }
     },
     {
-      "collection": "registry",
-      "name": "registry_global_search",
+      "collection": "pilots",
+      "name": "pilots_registry_search",
+      "type": "search",
+      "definition": {
+        "mappings": {
+          "dynamic": false,
+          "fields": {
+            "id": { "type": "string" },
+            "pilotStatus": { "type": "token" },
+            "publicationStatus": { "type": "token" },
+            "currentPhase": { "type": "string" },
+            "display.headline": { "type": "string", "analyzer": "lucene.standard" },
+            "display.dek": { "type": "string", "analyzer": "lucene.standard" },
+            "pilotNote": { "type": "document", "dynamic": true }
+          }
+        }
+      }
+    },
+    {
+      "collection": "frameworks",
+      "name": "frameworks_registry_search",
+      "type": "search",
+      "definition": {
+        "mappings": {
+          "dynamic": false,
+          "fields": {
+            "id": { "type": "string" },
+            "status": { "type": "token" },
+            "category": { "type": "token" },
+            "audience": { "type": "string" },
+            "region": { "type": "string" },
+            "tags": { "type": "string" },
+            "display.headline": { "type": "string", "analyzer": "lucene.standard" },
+            "summary": { "type": "string", "analyzer": "lucene.standard" },
+            "sourceUrls": { "type": "string" }
+          }
+        }
+      }
+    },
+    {
+      "collection": "free-resources",
+      "name": "free_resources_registry_search",
+      "type": "search",
+      "definition": {
+        "mappings": {
+          "dynamic": false,
+          "fields": {
+            "id": { "type": "string" },
+            "status": { "type": "token" },
+            "category": { "type": "token" },
+            "audience": { "type": "string" },
+            "region": { "type": "string" },
+            "provider": { "type": "string" },
+            "display.headline": { "type": "string", "analyzer": "lucene.standard" },
+            "summary": { "type": "string", "analyzer": "lucene.standard" },
+            "sourceUrls": { "type": "string" }
+          }
+        }
+      }
+    },
+    {
+      "collection": "initiatives",
+      "name": "initiatives_registry_search",
+      "type": "search",
+      "definition": {
+        "mappings": {
+          "dynamic": false,
+          "fields": {
+            "id": { "type": "string" },
+            "status": { "type": "token" },
+            "category": { "type": "token" },
+            "audience": { "type": "string" },
+            "region": { "type": "string" },
+            "leadOrganization": { "type": "string" },
+            "display.headline": { "type": "string", "analyzer": "lucene.standard" },
+            "summary": { "type": "string", "analyzer": "lucene.standard" },
+            "sourceUrls": { "type": "string" }
+          }
+        }
+      }
+    },
+    {
+      "collection": "assessments&credentialing",
+      "name": "assessments_credentialing_registry_search",
+      "type": "search",
+      "definition": {
+        "mappings": {
+          "dynamic": false,
+          "fields": {
+            "id": { "type": "string" },
+            "status": { "type": "token" },
+            "category": { "type": "token" },
+            "audience": { "type": "string" },
+            "region": { "type": "string" },
+            "issuer": { "type": "string" },
+            "credentialType": { "type": "string" },
+            "display.headline": { "type": "string", "analyzer": "lucene.standard" },
+            "summary": { "type": "string", "analyzer": "lucene.standard" },
+            "sourceUrls": { "type": "string" }
+          }
+        }
+      }
+    },
+    {
+      "collection": "policies",
+      "name": "policies_registry_search",
       "type": "search",
       "definition": {
         "mappings": {
@@ -29,10 +148,37 @@
           "fields": {
             "id": { "type": "string" },
             "type": { "type": "token" },
+            "status": { "type": "token" },
+            "statusCode": { "type": "token" },
+            "jurisdiction": { "type": "string" },
+            "jurisdictionLevel": { "type": "token" },
             "title": { "type": "string", "analyzer": "lucene.standard" },
             "summary": { "type": "string", "analyzer": "lucene.standard" },
+            "policySummary": { "type": "string", "analyzer": "lucene.standard" },
             "tags": { "type": "string" },
-            "status": { "type": "token" }
+            "sourceUrls": { "type": "string" }
+          }
+        }
+      }
+    },
+    {
+      "collection": "community-signals",
+      "name": "community_signals_registry_search",
+      "type": "search",
+      "definition": {
+        "mappings": {
+          "dynamic": false,
+          "fields": {
+            "id": { "type": "string" },
+            "type": { "type": "token" },
+            "status": { "type": "token" },
+            "signalKind": { "type": "token" },
+            "category": { "type": "token" },
+            "title": { "type": "string", "analyzer": "lucene.standard" },
+            "summary": { "type": "string", "analyzer": "lucene.standard" },
+            "communitySummary": { "type": "string", "analyzer": "lucene.standard" },
+            "tags": { "type": "string" },
+            "sourceUrls": { "type": "string" }
           }
         }
       }
@@ -40,6 +186,8 @@
   ],
   "notes": [
     "Use Atlas Search for registry keyword, fuzzy, and faceted search instead of legacy text indexes or regex-heavy queries.",
+    "These definitions are documentation/review artifacts only; the inspected live collections had no Atlas Search indexes on 2026-05-17.",
+    "State policy and state community signal collections currently have practical lookup indexes and can be added to Atlas Search later if public search requires them.",
     "Keep dynamic mapping off for stable public search surfaces and add fields intentionally as schemas evolve."
   ]
 }
