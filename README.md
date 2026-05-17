@@ -1,30 +1,51 @@
-# AAB Registry Schemas
+# AAB Data and Schema
 
-This repository defines the shared MongoDB document schemas used by the AAB evidence registry. It started as the case schema repository and now acts as the schema package for all registry collections so website, ingestion, review, and publication workflows can collaborate against the same data contract.
+This repository is the public collaboration layer for AAB registry data structures. MongoDB remains the live operational database, and the AAB website remains the public publishing layer. This repository documents how records are structured, reviewed, exported, searched, and improved before changes become official registry content.
+
+## What Belongs Here
+
+- JSON Schemas for AAB registry collections.
+- CSV and Markdown submission templates.
+- Field definitions and data dictionary notes.
+- Public dated exports from MongoDB when AAB chooses to publish snapshots.
+- Validation scripts and examples for contributors.
+- Atlas Search index definitions and example query patterns.
+- Review status definitions and source-quality rubrics.
+
+## What Does Not Belong Here
+
+- MongoDB credentials or `.env` files.
+- Private reviewer notes or unpublished sensitive pilot data.
+- The canonical live database.
+- Website application code.
 
 ## Repository Structure
 
-- `schemas/case.schema.json` - primary AAB case registry record schema.
-- `schemas/pilot.schema.json` - pilot registry records derived from case and pilot framework evidence.
-- `schemas/framework.schema.json` - frameworks and crosswalk-ready source records.
-- `schemas/resource.schema.json` - free resources and curriculum/toolkit records.
-- `schemas/initiative.schema.json` - initiatives and collaborative project records.
-- `schemas/assessment.schema.json` - assessments, credentials, and measurement systems.
-- `schemas/policy.schema.json` - country or jurisdiction-level policy signal records.
-- `schemas/community-signal.schema.json` - country-level community signal records.
-- `schemas/us-state-policy.schema.json` - U.S. state AI policy records.
-- `schemas/us-state-community-signal.schema.json` - U.S. state community signal records.
-- `mongodb/search-indexes.json` - recommended Atlas Search index definitions for registry lookup.
+- `schemas/` - JSON Schema files for registry records.
+- `templates/` - contributor-facing submission and review templates.
+- `examples/` - small sample records that demonstrate schema shape.
+- `exports/` - dated public snapshots exported from MongoDB.
+- `search/` - Atlas Search index definitions and search examples.
+- `validation/` - scripts for checking submitted records.
+- `docs/` - data dictionary, workflow, status, and source-review documentation.
+- `.github/ISSUE_TEMPLATE/` - issue forms for submissions and schema changes.
 
-## Design Notes
+## Collaboration Flow
 
-The schemas are intentionally validation-oriented but not overly restrictive. AAB records evolve as evidence improves, so each schema allows additional fields while requiring stable identity, title, summary, status, source trace, and collection-specific signal fields.
+1. Contributors open an issue or pull request with a proposed record, schema change, or data correction.
+2. AAB data reviewers check source trace, schema fit, evidence status, and publication risk.
+3. Accepted records are entered into MongoDB by maintainers or approved data operators.
+4. The AAB website publishes approved public records from MongoDB.
+5. Public exports may be committed here as dated snapshots for transparency and research reuse.
 
-The schemas were derived from the current `aab-dynamic-website/data/*.json` MongoDB fallback snapshots. Production MongoDB collection names should match the website README unless explicitly overridden by environment variables.
+## MongoDB and Search Notes
 
-## Collaboration Guidance
+Use Atlas Search for registry keyword, fuzzy, faceted, and multi-field search. Avoid regex-heavy search patterns for public registry discovery. Search index definitions belong in `search/` so collaborators can review field coverage before changes are applied to MongoDB Atlas.
 
-- Make schema changes here first when adding new registry fields.
-- Keep source trace fields (`sourceUrls`, `sourceFile`, `sourcePath`, `lastVerifiedAt`) intact.
-- Use pull requests for breaking changes to required fields or enum values.
-- Keep website data adapters backward-compatible when possible.
+## Current Record Families
+
+AAB currently organizes records around cases, pilots, frameworks, free resources, initiatives, assessments and credentials, policy signals, community signals, U.S. state policy signals, and U.S. state community signals.
+
+## Contributing
+
+Start with `CONTRIBUTING.md`, then use the relevant issue template. Breaking schema changes should be proposed before implementation because they can affect MongoDB ingestion, website rendering, exports, and standards evidence traces.
