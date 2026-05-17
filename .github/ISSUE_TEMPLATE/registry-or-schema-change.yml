@@ -1,0 +1,61 @@
+name: Registry or schema change
+description: Propose a registry record, schema update, export correction, or search-field change.
+title: "[Data]: "
+labels: ["status:needs-triage"]
+body:
+  - type: dropdown
+    id: contribution_type
+    attributes:
+      label: Contribution type
+      options:
+        - New record proposal
+        - Data correction
+        - Schema change
+        - Data dictionary update
+        - Public export issue
+        - Atlas Search/index issue
+        - Validation/template improvement
+    validations:
+      required: true
+  - type: dropdown
+    id: collection_family
+    attributes:
+      label: Collection family
+      options:
+        - Cases
+        - Pilots
+        - Frameworks
+        - Free resources
+        - Initiatives
+        - Assessments and credentials
+        - Policy signals
+        - Community signals
+        - U.S. state policy signals
+        - U.S. state community signals
+        - Cross-collection
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: Describe the change, record, correction, or question.
+    validations:
+      required: true
+  - type: textarea
+    id: source_trace
+    attributes:
+      label: Source trace
+      description: Provide public source URLs, record IDs, export files, or evidence notes.
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: Note any effects on MongoDB, website rendering, exports, search, schemas, or standards evidence traces.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety check
+      options:
+        - label: I have not included credentials, private student data, or confidential partner materials.
+          required: true
