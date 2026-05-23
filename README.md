@@ -1,13 +1,13 @@
-# AAB Data and Schema
+# AABoard Data and Schema
 
-This repository is the public collaboration layer for AAB registry data structures. MongoDB remains the live operational database, and the AAB website remains the public publishing layer. This repository documents how records are structured, reviewed, exported, searched, and improved before changes become official registry content.
+This repository is the public collaboration layer for AABoard registry data structures. MongoDB remains the live operational database, and the AABoard website remains the public publishing layer. This repository documents how records are structured, reviewed, exported, searched, and improved before changes become official registry content.
 
 ## What Belongs Here
 
-- JSON Schemas for AAB registry collections.
+- JSON Schemas for AABoard registry collections.
 - CSV and Markdown submission templates.
 - Field definitions and data dictionary notes.
-- Public dated exports from MongoDB when AAB chooses to publish snapshots.
+- Public dated exports from MongoDB when AABoard chooses to publish snapshots.
 - Validation scripts and examples for contributors.
 - Atlas Search index definitions and example query patterns.
 - Review status definitions and source-quality rubrics.
@@ -33,7 +33,7 @@ This repository is the public collaboration layer for AAB registry data structur
 ## Collaboration Flow
 
 1. Contributors open an issue or pull request with a proposed record, schema change, or data correction.
-2. AAB data reviewers check source trace, schema fit, evidence status, and publication risk.
+2. AABoard data reviewers check source trace, schema fit, evidence status, and publication risk.
 3. Accepted records are entered into MongoDB by maintainers or approved data operators.
 4. The AAB website publishes approved public records from MongoDB.
 5. Public exports may be committed here as dated snapshots for transparency and research reuse.
@@ -44,7 +44,7 @@ Use Atlas Search for registry keyword, fuzzy, faceted, and multi-field search. A
 
 ## Current Record Families
 
-AAB currently organizes records around cases, pilots, frameworks, free resources, initiatives, assessments and credentials, policy signals, community signals, U.S. state policy signals, and U.S. state community signals.
+AABoard currently organizes records around cases, pilots, frameworks, free resources, initiatives, assessments and credentials, policy signals, community signals, U.S. state policy signals, and U.S. state community signals.
 
 ## Contributing
 
